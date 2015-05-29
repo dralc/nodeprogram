@@ -1,1 +1,1 @@
-web: node ./np/hello/ohello
+web: node ./np/hello/hello
