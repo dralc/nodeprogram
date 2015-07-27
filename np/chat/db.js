@@ -1,35 +1,18 @@
-var util = require('util');
-var mongodb = require('mongodb');
+var util = require('util')
+    , mongodb = require('mongodb')
+    , MongoClient = mongodb.MongoClient
+    , assert = require('assert')
+    ;
 
-//
-//var Db = mongodb.Db;
-//var Connection = mongodb.Connection;
-//var Server = mongodb.Server;
-//var host = '127.0.0.1';
-//var port = 27017;
-//
-//
-//var db = new Db('test', new Server(host, port, {}));
-//
-//db.open(function(e,c) {
-//    //console.log(util.inspect(db));
-//    console.log(db._state);
-//    db.close();
-//});
-//
+var dbConnUrl = process.env.MONGOHQ_URL || 'mongodb://localhost:27017/test';
 
-var MongoClient = mongodb.MongoClient
-    , assert = require('assert');
-
-var url = 'mongodb://localhost:27017/test';
-
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(dbConnUrl, function (err, db) {
     assert.equal(null, err);
 
     var collection = db.collection('aloy');
     collection.find().toArray(function (er, coll) {
         console.log(arguments);
+
+        db.close();
     });
-
 });
-
