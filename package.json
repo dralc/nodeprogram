@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aloysius Chan <aloysius.chan@news.com.au>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.1",
+    "mongodb": "^2.0.39"
+  }
 }
-
