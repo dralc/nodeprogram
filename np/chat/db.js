@@ -6,11 +6,6 @@ var util = require('util')
     , http = require('http')
     ;
 
-console.log('******* --------env start --------- *********');
-console.log(process.env.PORT);
-util.inspect(process.env);
-console.log('******* ------- env  end ---------- *********');
-
 var dbConnUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 
 MongoClient.connect(dbConnUrl, function (err, db) {
@@ -20,7 +15,7 @@ MongoClient.connect(dbConnUrl, function (err, db) {
     var server = http.createServer(function (req, res) {
 
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Mongo connected1');
+        res.end('Mongo connected');
     });
 
     server.listen(process.env.PORT || 1337, function () {
@@ -28,11 +23,4 @@ MongoClient.connect(dbConnUrl, function (err, db) {
     });
 
     db.close();
-
-    //var collection = db.collection('aloy');
-    //collection.find().toArray(function (er, coll) {
-    //    console.log(arguments);
-    //
-    //    db.close();
-    //});
 });
