@@ -7,6 +7,7 @@ var util = require('util')
     ;
 
 console.log('******* --------env start --------- *********');
+console.log(process.env.PORT);
 util.inspect(process.env);
 console.log('******* ------- env  end ---------- *********');
 
