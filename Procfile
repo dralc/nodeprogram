@@ -1,1 +1,1 @@
-web: node ./np/hello/hello
+web: node ./np/chat/db
