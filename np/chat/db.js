@@ -17,7 +17,7 @@ MongoClient.connect(dbConnUrl, function (err, db) {
         res.end('Mongo connected1');
     });
 
-    server.listen(1337, function () {
+    server.listen(process.env.port || 1337, function () {
         console.log('Server running at %s:%s', server.address().address, server.address().port);
     });
 
