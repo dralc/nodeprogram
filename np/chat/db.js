@@ -1,9 +1,14 @@
+
 var util = require('util')
     , mongodb = require('mongodb')
     , MongoClient = mongodb.MongoClient
     , assert = require('assert')
     , http = require('http')
     ;
+
+console.log('******* --------env start --------- *********');
+util.inspect(process.env);
+console.log('******* ------- env  end ---------- *********');
 
 var dbConnUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 
