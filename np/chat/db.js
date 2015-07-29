@@ -6,7 +6,8 @@ var util = require('util')
     , http = require('http')
     ;
 
-var dbConnUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
+var dbName = 'test';
+var dbConnUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/' + dbName;
 
 MongoClient.connect(dbConnUrl, function (err, db) {
 
