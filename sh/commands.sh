@@ -39,3 +39,15 @@ which command_name  # Gives the location of the command
 help command_name   # help for built-in commands
 apropos search | man -k search   # Propose a list of commands matching search
 
+> FILE                # Empty out existing file or create new file
+ls /usr/bin >> FILE   # Append output to FILE (safer than '>' as you won't accidently empty out FILE)
+ls /badfolder 2> ERRORFILE  # Explicitly redirect error msg to ERRORFILE. stderror has file descriptor 2
+
+ls /usr/bin > FILE 2>&1 # Redirects stdout and stderror to FILE. Reading from right to left stderror to stdout, then stdout to FILE
+ls /usr/bin &> FILE     # shorthand for above
+
+ls /badfolder 2> /dev/null  # Dump error msgs by redirecting stderror to the bit bucket
+
+cat >> FILE  # Redirect stdin (keyboard) to FILE (Ctrl + d to end stdin)
+cat < FILE  # Get input from FILE
+
