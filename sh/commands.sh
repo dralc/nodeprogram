@@ -51,3 +51,6 @@ ls /badfolder 2> /dev/null  # Dump error msgs by redirecting stderror to the bit
 cat >> FILE  # Redirect stdin (keyboard) to FILE (Ctrl + d to end stdin)
 cat < FILE  # Get input from FILE
 
+sort | uniq | grep | head | tail   # stdout filters
+
+ls /usr/bin | tee FILE # Outputs to both FILE and stdout
