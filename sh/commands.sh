@@ -54,3 +54,27 @@ cat < FILE  # Get input from FILE
 sort | uniq | grep | head | tail   # stdout filters
 
 ls /usr/bin | tee FILE # Outputs to both FILE and stdout
+
+##### EXPANSION #####
+
+echo *      # Here '*' gets expanded into a list of files in the pwd
+echo ~/projects/*/test  # Finds test subfolders in all projects
+
+echo $( (2+2) )     # Arithmetic expansion
+echo $( (5**2) )    # 5 to the power of 2
+
+echo start-{A,B}-end     # Expands to: start-A-end start-B-end
+echo start-{1..3}-end    # Expands to: start-1-end start-2-end start-3-end
+echo start-{01..3}-end   # Expands to: start-01-end start-02-end start-03-end
+echo {2010..2015}-{01..12}  # Eg. To expand to a list a dates
+
+# Cmd substitution $() OR ``
+ls -l $(which cp)   # Expands 'which cp' to feed path of 'cp' into outer cmd 'ls -l'
+
+echo "$(cal)"  # Double quotes prevents word splitting (ie. prevents intepretation of spaces as cmd argument delimiters)
+echo $(cal)    # compare output with above. Notice that all spaces are intepreted as arg delimiter
+
+# Note the decreasing level of expansion in the following. unquoted, double quoted, single quoted
+echo text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER      # Gives: text /home/me/ls-output.txt a b foo 4 me
+echo "text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER"    # Gives: text ~/*.txt {a,b} foo 4 me
+echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'    # Gives: text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
