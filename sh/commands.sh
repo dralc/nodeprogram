@@ -78,3 +78,21 @@ echo $(cal)    # compare output with above. Notice that all spaces are inteprete
 echo text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER      # Gives: text /home/me/ls-output.txt a b foo 4 me
 echo "text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER"    # Gives: text ~/*.txt {a,b} foo 4 me
 echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'    # Gives: text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
+
+# History
+history     # list cmd history
+history -c  # clear
+!!          # Run last cmd
+!string     # Run last cmd starting with {string}
+!num        # Run cmd at {num}
+!?string    # Run last cmd containing {string}
+
+# vi cmd (normal) mode
+:q! # force exit
+w   # move fwd a word inc. punctuation
+b   # move back a word inc. punctuation
+ctrl+f  # page down
+ctrl+b  # page up
+u   # undo
+
+# vi edit (insert) mode
