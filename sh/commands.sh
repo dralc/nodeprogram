@@ -118,3 +118,8 @@ n           # Find next occurrence
 ZZ      # Save and Exit
 :wq     # same as above
 :w newName  # Saves file as newName
+
+
+# Prompt customization
+
+PS1=\[\033[0;32m\]$?\[\033[0m\] \[\033[1;35m\]\u\[\033[0m\]: \[\033[1;35m\]\W\[\033[0m\] \[\033[1;92m\]\[\033[0m\]$
