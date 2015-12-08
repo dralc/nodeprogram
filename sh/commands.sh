@@ -87,12 +87,34 @@ history -c  # clear
 !num        # Run cmd at {num}
 !?string    # Run last cmd containing {string}
 
-# vi cmd (normal) mode
+# vim cmd (normal) mode
 :q! # force exit
 w   # move fwd a word inc. punctuation
 b   # move back a word inc. punctuation
 ctrl+f  # page down
 ctrl+b  # page up
+
 u   # undo
 
-# vi edit (insert) mode
+A   # Start appending to the end of the line
+o   # Insert new line
+
+dd      # Cut line
+5dd     # Cut 5 lines
+dw      # Cut word
+x       # Cut char
+
+y       # Copy
+
+p       # Paste
+
+J       # Join line
+
+/word       # Find word in file
+n           # Find next occurrence
+
+:%s/search/replace/gc   # Find and replace text in file. % means whole file. g = global, c = confirm? / can be _
+
+ZZ      # Save and Exit
+:wq     # same as above
+:w newName  # Saves file as newName
