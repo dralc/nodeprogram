@@ -17,6 +17,9 @@ ls -A         # doesn't list the . and ..
 ls -i         # Print the inode no. in the first field. inode no. is used to verify if any 2 files/hardlinks are the same
 
 file file_name   # file type info
+
+wc -l FILE  # line count from stdin or FILE
+
 # Everything in Unix is a file
 
 cd /bin   # binaries for boot and run
@@ -39,6 +42,8 @@ which command_name  # Gives the location of the command
 help command_name   # help for built-in commands
 apropos search | man -k search   # Propose a list of commands matching search
 
+##### REDIRECTION ###################################################################################
+
 > FILE                # Empty out existing file or create new file
 ls /usr/bin >> FILE   # Append output to FILE (safer than '>' as you won't accidently empty out FILE)
 ls /badfolder 2> ERRORFILE  # Explicitly redirect error msg to ERRORFILE. stderror has file descriptor 2
@@ -55,7 +60,7 @@ sort | uniq | grep | head | tail   # stdout filters
 
 ls /usr/bin | tee FILE # Outputs to both FILE and stdout
 
-##### EXPANSION #####
+##### EXPANSION ####################################################
 
 echo *      # Here '*' gets expanded into a list of files in the pwd
 echo ~/projects/*/test  # Finds test subfolders in all projects
@@ -79,13 +84,16 @@ echo text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER      # Gives: text /home/me/l
 echo "text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER"    # Gives: text ~/*.txt {a,b} foo 4 me
 echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'    # Gives: text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER
 
-# History
+##### History ####################################
+
 history     # list cmd history
 history -c  # clear
 !!          # Run last cmd
 !string     # Run last cmd starting with {string}
 !num        # Run cmd at {num}
 !?string    # Run last cmd containing {string}
+
+##### VIM ########################################
 
 # vim cmd (normal) mode
 :q! # force exit
@@ -120,6 +128,22 @@ ZZ      # Save and Exit
 :w newName  # Saves file as newName
 
 
-# Prompt customization
+##### Prompt customization ########################################################################################
 
 PS1=\[\033[0;32m\]$?\[\033[0m\] \[\033[1;35m\]\u\[\033[0m\]: \[\033[1;35m\]\W\[\033[0m\] \[\033[1;92m\]\[\033[0m\]$
+
+##### Searching for files ###################################################################################
+
+locate FILENAME     # locates the filename from an internal database (index) which needs to be updated frequently
+
+find DIR            # finds all files under DIR recursively
+
+# Tests
+find DIR -type d    # finds files testing for type where d = directory, f = file, l = symbolic links
+find DIR -type f -name '*.jpg' -size +1M    # finds files testing for name and size (+ means gt, - means lt)
+
+# More tests available in man find !
+
+# Operators
+find DIR \( -type f -not -perm 0600 \) -or \( -type d -not -perm 0700 \)    # example of 2 expression groups and using -or
+
