@@ -147,3 +147,18 @@ find DIR -type f -name '*.jpg' -size +1M    # finds files testing for name and s
 # Operators
 find DIR \( -type f -not -perm 0600 \) -or \( -type d -not -perm 0700 \)    # example of 2 expression groups and using -or
 
+##### RegEx ###############################
+
+grep -E EXPRESSION  # -E allows all metacharacters to be used without escaping them with '\'.
+
+##### sed #################################
+
+# search and replace
+sed -E -i bak -e 's_REGEX1_REPLACE1_' -e 's_REGEX2_REPLACE2_' FILE.txt
+# "-i bak" writes backup to FILE.txtbak and changes to FILE.txt
+# -e for multiple search and replace cmds
+
+sed -E 's_(group1)_&\1_g' FILE.txt
+# group1 is referred to as "\1". The whole match is referred to as "&"
+# Flag "g" will replace all matches on a line
+
