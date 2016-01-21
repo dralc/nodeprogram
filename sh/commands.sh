@@ -127,6 +127,10 @@ ZZ      # Save and Exit
 :wq     # same as above
 :w newName  # Saves file as newName
 
+# Editor configs. Add these to ~/.vimrc
+syntax on       # Enables syntax colors OR :set syntax=sh
+set autoindent
+set tabstop=4
 
 ##### Prompt customization ########################################################################################
 
@@ -161,4 +165,16 @@ sed -E -i bak -e 's_REGEX1_REPLACE1_' -e 's_REGEX2_REPLACE2_' FILE.txt
 sed -E 's_(group1)_&\1_g' FILE.txt
 # group1 is referred to as "\1". The whole match is referred to as "&"
 # Flag "g" will replace all matches on a line
+
+##### Scripting ##############################
+
+# Make sure my script is executable
+chmod 755 MY_SCRIPT     # everyone can execute OR 700 only owner can execute
+
+# Make sure my script can be found by shell
+echo $PATH     # check the execution paths
+export PATH=MY_NEW_PATH:"$PATH"   # Add my new path to the existing path in ~/.bashrc
+
+. ~/.bashrc       # Reloads ~/.bashrc
+source .bashrc  # same as above
 
