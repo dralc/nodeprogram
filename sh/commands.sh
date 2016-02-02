@@ -178,3 +178,25 @@ export PATH=MY_NEW_PATH:"$PATH"   # Add my new path to the existing path in ~/.b
 . ~/.bashrc       # Reloads ~/.bashrc
 source .bashrc  # same as above
 
+# Variables
+myVar='value'
+$myVar     # simple var usage
+
+someVar='dog'
+dog1='john'
+${someVar}1  # complex var expansion. gives dog1
+
+# 'Here document' (file input redirection)
+# inside a here documents, single and double quotes are printed as literals which could be more intuitive
+cat <<- _EOF_   # '-' means ignore tabs. _EOF_ can be any token to mark the start and end of the file
+<xml>
+    <tag1>$myVar</tag1>
+    <tag2>$dog1</tag2>
+</xml>
+_EOF_
+
+# This prints similar output to the above here document, but using 'echo'
+echo "<xml>
+    <tag1>$myVar</tag1>
+    <tag2>$dog1</tag2>
+</xml>"
