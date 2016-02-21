@@ -1,0 +1,23 @@
+{#http://twig.sensiolabs.org/doc/templates.html#}
+
+{# -------- VARIABLES --------- #}
+{# Access #}
+{{ myVar.prop1 }}    {# goes through 5 type checks #}
+{{ myVar['prop1'] }} {# single type check. since this is the notation for explicit array access #}
+{{ attribute(myObj, 'some-attr-'.i ) }}   {# dynamic property access #}
+
+{# Globals #}
+{{ _self }}
+{{ _context }}
+{{ _charset }}
+
+{# Set #}
+{% set myVar = 'a' %}
+{% set myVar = [1, 2] %}
+{% set myVar = {'a': 1} %}
+{% set myChunk %}
+    <div>
+        <a></a>
+        <b></b>
+    </div>
+{% endset %}

@@ -1,0 +1,16 @@
+{#http://twig.sensiolabs.org/doc/tags/extends.html#}
+
+{# -------- BLOCK, EXTENDS ---------#}
+
+{# parent.html#}
+{% block myBlock%}
+    <tag1></tag1>
+{% endblock %}
+
+{# child.html #}
+{% extends "parent.html" %}   {# only 1 extends is allowed #}
+{% block myBlock %}
+    {{ parent() }}
+    <tag2></tag2>
+{% endblock %}
+
