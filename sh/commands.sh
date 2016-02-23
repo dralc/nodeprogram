@@ -200,3 +200,24 @@ echo "<xml>
     <tag1>$myVar</tag1>
     <tag2>$dog1</tag2>
 </xml>"
+
+###### Flow control ###############################
+# if [commands]; then elif .. else .. fi
+# commands can be composed of file/string/integer expressions (pg 384)
+
+if [ $x -eq 5 ]; then   # integer expression
+    echo 'x equals 5'
+elif [ $x == 'five' ]; then  # string expression
+    echo 'x equals five'
+else
+    echo 'x is something else'
+fi
+
+
+if [[ string =~ regex ]] # regex test (pg 389)
+
+if (( $x > 2)) # explicit integer operation
+
+# Exit status
+# 0|true is success, 1|false is failure
+$?  # returns current exit status
