@@ -6,3 +6,8 @@
     will be upper-cased
 {% endfilter %}
 
+{# escape #}
+{{ someString | escape('html_attr | html | js | css | url') }}
+
+{# escape('url') For escaping url param values only #}
+{{ 'http://www.domain.com/?c=3&d=45' | escape('url') }}
