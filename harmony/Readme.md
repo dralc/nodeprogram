@@ -32,3 +32,29 @@ Quickly creates variables out of array and object values
 
     `var ar = [1, 2, 3]`
     `var expandedAr = ['a', 'b', ...ar, 'c']` gives `['a', 'b', 1, 2, 3, 'c']`
+
+# arrow functions
+1. Best for inline functions with single line returns
+
+    ```javascript
+    myAr.filter(function (obj) {
+        return obj.value <= 15;
+    });
+    ```
+    
+    becomes
+    ```javascript
+    myAr.filter( obj => obj.value <= 15 );
+    ```
+    
+    
+    _Reasoning_
+    
+    1. It removes the most boiler plate in this shorthand syntax
+    1. The logic in the function can't be directly unit tested (arrow functions are always anonymous)
+     so it should be really simple. 
+    
+2. `this` will now be assigned to the parent context. Previously, `this` would vary based on 3 factors:
+
+    > From [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 
+    Until arrow functions, every new function defined its own this value (a new object in case of a constructor, undefined in strict mode function calls, the context object if the function is called as an "object method", etc.). This proved to be annoying with an object-oriented style of programming.
