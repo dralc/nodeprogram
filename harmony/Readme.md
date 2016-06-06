@@ -6,7 +6,6 @@ See the node support for harmony using `node --v8-options | grep harmony`
 Quickly creates variables out of array and object values
 
 `var [a,b,c] = ['one', 'two', 'three']` effectively gives you
-
 `var a='one';   var b='two';   var c='three'`
 
 # let, const
@@ -16,22 +15,20 @@ Quickly creates variables out of array and object values
 # spread
 1. For spreading out an array argument across a functions arguments
 
-    `myFn(arg1, arg2, arg3) {}`
- 
-    `var ar = [1, 2, 3]`
+    ```javascript
+    function myFn(arg1, arg2, arg3) {
     
-    `myFn(...ar)`
-    
-    gives `arg1==1, arg2==2, arg3==3`
+    }
+    var ar = [1, 2, 3]
+    ```
+    `myFn(...ar)` gives `arg1==1, arg2==2, arg3==3`
 
 1. Used with destructuring
 
     `var [a, b, ...theRest] = [1, 2, 3, 4]`
-
     gives `theRest === [3, 4]`
 
 1. To merge collections
 
     `var ar = [1, 2, 3]`
-    
     `var expandedAr = ['a', 'b', ...ar, 'c']` gives `['a', 'b', 1, 2, 3, 'c']`
