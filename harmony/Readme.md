@@ -58,3 +58,15 @@ Quickly creates variables out of array and object values
 
     > From [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 
     Until arrow functions, every new function defined its own this value (a new object in case of a constructor, undefined in strict mode function calls, the context object if the function is called as an "object method", etc.). This proved to be annoying with an object-oriented style of programming.
+
+
+# Template literals
+1. Provides variable interpolation in strings
+
+    ```javascript
+    var var1 = 'jumped'
+    var var2 = 'fence'
+    
+    console.log(`The fox ${var1} over the ${var2}`)
+    ```
+    
