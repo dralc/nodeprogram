@@ -219,5 +219,12 @@ if [[ string =~ regex ]] # regex test (pg 389)
 if (( $x > 2)) # explicit integer operation
 
 # Exit status
-# 0|true is success, 1|false is failure
+# exit 0|true is success, exit 1|false is failure
 $?  # returns current exit status
+
+###### Manual #####################################
+man bash | less -p ' {7}BUILT_IN_CMD_NAME'    # Finds the details of a built-in command
+
+# Navigating the manual :
+# space/b ---> page up/down
+# n ---> go to next occurence
