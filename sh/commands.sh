@@ -214,7 +214,8 @@ else
 fi
 
 
-if [[ string =~ regex ]] # regex test (pg 389 [1])
+if [[ string =~ ^text ]]   # regex test (pg 389 [1])
+if [[ ! string =~ ^text ]] # negation regex test
 
 if (( $x > 2)) # explicit integer operation
 
