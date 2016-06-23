@@ -214,7 +214,7 @@ else
 fi
 
 
-if [[ string =~ regex ]] # regex test (pg 389)
+if [[ string =~ regex ]] # regex test (pg 389 [1])
 
 if (( $x > 2)) # explicit integer operation
 
@@ -228,3 +228,7 @@ man bash | less -p ' {7}BUILT_IN_CMD_NAME'    # Finds the details of a built-in 
 # Navigating the manual :
 # space/b ---> page up/down
 # n ---> go to next occurence
+
+
+#______ Bibliography ____________________________________________________________________
+# [1] http://linuxcommand.org/tlcl.php
