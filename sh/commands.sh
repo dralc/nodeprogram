@@ -5,6 +5,7 @@ date
 df    # disk free
 free  # -
 exit
+du -h -d 1 myFolder  # disk usage at 1 level deep for myFolder
 
 
 # Linux has one filesystem across all attached devices. Devices are mounted

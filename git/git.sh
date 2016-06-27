@@ -7,3 +7,6 @@ git checkout branchRef -- file1ToCopy.js file2ToCopy.css
 # List your repo's configuration
 git config -l
 
+# Clone a specific branch only
+git clone URL --branch branchName --single-branch myFolder
+
