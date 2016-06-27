@@ -202,8 +202,8 @@ echo "<xml>
 </xml>"
 
 ###### Flow control ###############################
-# if [commands]; then elif .. else .. fi
-# commands can be composed of file/string/integer expressions (pg 384)
+# if [ expression ]; then elif .. else .. fi
+# expression can be composed of file/string/integer expressions (details at `man test`)
 
 if [ $x -eq 5 ]; then   # integer expression
     echo 'x equals 5'
