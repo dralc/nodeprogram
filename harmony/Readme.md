@@ -20,21 +20,25 @@ var a='one';   var b='two';   var c='three'
 
     ```javascript
     function myFn(arg1, arg2, arg3) {
-    
     }
+    
     var ar = [1, 2, 3]
+    
+    myFn(...ar)  // gives arg1==1, arg2==2, arg3==3
     ```
-    `myFn(...ar)` gives `arg1==1, arg2==2, arg3==3`
 
 1. Used with destructuring
 
-    `var [a, b, ...theRest] = [1, 2, 3, 4]`
-    gives `theRest === [3, 4]`
+    ```javascript
+    var [a, b, ...theRest] = [1, 2, 3, 4]  // gives theRest === [3, 4]
+    ```
 
 1. To merge collections
 
-    `var ar = [1, 2, 3]`
-    `var expandedAr = ['a', 'b', ...ar, 'c']` gives `['a', 'b', 1, 2, 3, 'c']`
+    ```javascript
+    var ar = [1, 2, 3]
+    var expandedAr = ['a', 'b', ...ar, 'c']  // gives ['a', 'b', 1, 2, 3, 'c']
+    ```
 
 # arrow functions
 1. Best for inline functions with single line returns
