@@ -77,5 +77,43 @@ var a='one';   var b='two';   var c='three'
     console.log(`The fox ${var1} over the ${var2}`)
     ```
     
+# Classes
+1. Keywords used: `use strict, class, constructor get, extends, super`
+
+```javascript
+"use strict";
+
+class Person {
+    constructor (options={}) {
+        this.name = options.name;
+        this.sex = options.sex;
+        this.all = options;
+    }
+
+    get all_details() {
+        return this.all;
+    }
+}
+
+class Tourist extends Person {
+    constructor (options={}) {
+        super(options);
+        this.budget = options.budget;
+        this.interests = options.interests;
+    }
+
+    get recommendations() {
+        return ['luxury hotel', 'VIP shopping'];
+    }
+}
+
+var someone = new Tourist({name: 'Al', sex: 'male', budget: 888, interests: ['shopping', 'relax']});
+
+console.log(someone.all_details); // returns all Tourist fields
+console.log(`--> We highly recommend these for your trip: ${someone.recommendations}`);    
+```
+
+
 # References
 1. https://courses.nodecasts.io/courses/javascript-es6
+1. http://node.green (ES6 compatibility in nodejs)
