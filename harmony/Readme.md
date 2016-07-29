@@ -113,7 +113,23 @@ console.log(someone.all_details); // returns all Tourist fields
 console.log(`--> We highly recommend these for your trip: ${someone.recommendations}`);    
 ```
 
+# Symbols
+1. Are unique values used as object keys
+
+```javascript
+mySym = Symbol('some important flag');
+myObj[mySym] = true;  // Will not accidently overwrite another property
+```
+
+\> [More details](https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/)
+
+
+```javascript
+typeof Symbol() == 'symbol'
+Symbol.for(string)  // Get symbol from symbol registry shared across webpages
+```
 
 # References
 1. https://courses.nodecasts.io/courses/javascript-es6
 1. http://node.green (ES6 compatibility in nodejs)
+1. https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/
