@@ -129,7 +129,37 @@ typeof Symbol() == 'symbol'
 Symbol.for(string)  // Get symbol from symbol registry shared across webpages
 ```
 
+# Generator function & iterator
+
+A generator function creates an iterator object.
+`iterator.next()` is called to get the next value.
+
+\> [More details](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+
+```javascript
+    function* pager() {
+        var start = 0;
+
+        while (start < 50) {
+            if (!start) {
+                yield ++start;
+            }
+            start = start + 5;
+            yield start;
+        }
+    }
+
+    var pager_iterator = pager();
+
+    console.log(pager_iterator.next()); // 1
+    console.log(pager_iterator.next()); // 6
+    console.log(pager_iterator.next()); // 11
+    //..
+```
+
+
 # References
 1. https://courses.nodecasts.io/courses/javascript-es6
 1. http://node.green (ES6 compatibility in nodejs)
 1. https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/
+1. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
