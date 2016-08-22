@@ -157,6 +157,21 @@ A generator function creates an iterator object.
     //..
 ```
 
+# Maps
+Are dedicated key:value data structures.
+You `set` & `get` keys/values in the map where the keys can be any arbitrary value, including numbers and functions!
+
+```javascript
+myMap.set('a', 'value1')
+myMap.get('a')
+
+myMap.set(11, 'another-value')
+myMap.get(11)
+
+myMap.set(function() {}, 'something else')
+
+myMap.size // 3
+```
 
 # References
 1. https://courses.nodecasts.io/courses/javascript-es6
