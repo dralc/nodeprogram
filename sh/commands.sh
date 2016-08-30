@@ -232,5 +232,23 @@ man bash | less -p ' {7}BUILT_IN_CMD_NAME'    # Finds the details of a built-in 
 # n ---> go to next occurence
 
 
+###### SSH keys #####################################
+# To create the private/public ssh key pair:
+ssh-keygen -C "my email as a reference"
+# Save files to /Users/MYNAME/.ssh/mygithub_rsa
+
+# Protect private key id_rsa from external accesss
+chmod 700 ~/.ssh/mygithub_rsa
+
+# Check the ssh agent is running
+ps -a |grep [s]sh-agent
+
+# Check that your new identity is added
+ssh-add -l
+
+# Add identity to ~/.bash_profile
+ssh-add -t 999999 PRIVATE_KEY_file
+
+
 #______ Bibliography ____________________________________________________________________
 # [1] http://linuxcommand.org/tlcl.php
