@@ -131,7 +131,7 @@ Symbol.for(string)  // Get symbol from symbol registry shared across webpages
 
 # Generator function & iterator
 
-A generator function creates an iterator object.
+Calling a generator function creates an iterator object.
 `iterator.next()` is called to get the next value.
 
 \> [More details](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
