@@ -11,7 +11,8 @@ function handler(req, res) {
 ```
 \> [More details][nodecasts-httpclient]
 
-# Express.js intro
+# Express.js
+## Intro
 * Simple express http client to handle 2 routes at http://localhost:8080
 
 ```javascript
@@ -52,7 +53,6 @@ app.get('/', function () {
 
 \> [More details][nodecasts-express]
 
-# Express.js
 ## App wide 'config' variables
 * Usage
 ```javascript
@@ -75,6 +75,16 @@ process.env.NODE_ENV=production
 // Better to set it when build/run script
 $ NODE_ENV=production node app // OR
 exports NODE_ENV=production
+
+
+// Group environment configs together
+app.configure('development', function(){
+    app.set('capiUrl', 'http://testUrl');
+});
+
+app.configure('staging', 'production', function () {
+    app.set('capiUrl', process.env.app_capi_url);
+});
 ```
 
 ### 'view cache'
@@ -111,6 +121,24 @@ Defaults to `true`
 
 ### 'subdomain offset'
 Sets the return behaviour of `req.subdomains`
+
+## Middleware
+You set up middleware to handle tasks prior to serving the http response.
+
+```javascript
+app.use('/myroute', function (req, res, next) {
+  console.log(req.url);
+  return next();
+});
+
+app.get('/myroute', function (req, res) {
+  res.send('hello');
+});
+```
+
+
+
+
 
 
 
