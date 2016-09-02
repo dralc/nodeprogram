@@ -87,6 +87,7 @@ echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'    # Gives: text ~/*.txt {a
 
 ##### History ####################################
 
+ctrl+r , ctrl+r ... # to Reverse search in history and cycle through matches
 history     # list cmd history
 history -c  # clear
 !!          # Run last cmd
