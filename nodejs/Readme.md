@@ -11,7 +11,7 @@ function handler(req, res) {
 ```
 \> [More details][nodecasts-httpclient]
 
-# ExpressJS
+# Express.js intro
 * Simple express http client to handle 2 routes at http://localhost:8080
 
 ```javascript
@@ -36,16 +36,81 @@ var server = app.listen(8080, function () {
 
 * Serving static files
 ```javascript
-var express = require('express');
-
 // Looks for all static files in __dirname/www
 app.use(express.static('www');
-
 ```
 
+* Templating
+```javascript
+// Looks for jade files in __dirname/views
+app.set('view engine', 'jade');
+
+app.get('/', function () {
+    res.render('index', dataObj);
+});
+```
 
 \> [More details][nodecasts-express]
 
+# Express.js
+## App wide 'config' variables
+* Usage
+```javascript
+app.set('myAppVar', myVal)
+app.get('myAppVar') // OR p= myAppVar in jade
+
+app.enable('myAppBoolean') // alt to app.set(myAppBoolean, true)
+app.disable('myAppBoolean')
+
+if (app.enabled('myAppBoolean')) // tests if config is true
+if (app.disabled('myAppBoolean'))
+```
+
+### 'env'
+Defaults to 'development'
+```javascript
+app.set('env', 'production') // OR
+process.env.NODE_ENV=production
+
+// Better to set it when build/run script
+$ NODE_ENV=production node app // OR
+exports NODE_ENV=production
+```
+
+### 'view cache'
+Sets whether to cache compiled templates.
+`false` is default, `true` when `env` is 'production'
+
+### 'view engine'
+Sets the template file extension
+
+### 'views'
+Sets the folder location of templates.
+Defaults to `__dirname/views`
+```javascript
+app.set('views', '${__dirname}/templates')
+```
+
+### 'trust proxy'
+??
+
+### 'json replacer' & 'json spaces'
+Sets the behaviour for `res.json()`
+
+### 'case sensitive routing' & 'strict routing'
+Sets whether case and trailing '/' in the route is important
+Defaults to `false`
+
+### 'x-powered-by'
+Sets the HTTP response header `X-Powered-By=Express`
+Defaults to `true`
+
+### 'etag'
+Sets HTTP caching mechanism
+Defaults to `true`
+
+### 'subdomain offset'
+Sets the return behaviour of `req.subdomains`
 
 
 
