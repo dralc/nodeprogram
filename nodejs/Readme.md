@@ -144,8 +144,24 @@ Called via `app.use('myRoute', middlewareObj)`
 * basic authentication (? ...express.basicAuth())
 * ...
 
+# Handling named URL params
+## app.param
+Sets callbacks for matching named/[route parameters](http://expressjs.com/en/guide/routing.html#route-parameters)
 
+```javascript
+app.param('userId', function (req) {
+    // Sets the user
+    req.user = getUserFromId();
+})
 
+app.get('/my/route/:userId', function () {
+    // Consume req.user
+})
+
+app.get('/other/:userId/route', function () {
+    // Consume req.user
+})
+```
 
 
 
