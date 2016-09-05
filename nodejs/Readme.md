@@ -123,19 +123,23 @@ Defaults to `true`
 Sets the return behaviour of `req.subdomains`
 
 ## Middleware
-You set up middleware to handle tasks prior to serving the http response.
+Are the handlers of a Request.
 
-```javascript
-app.use('/myroute', function (req, res, next) {
-  console.log(req.url);
-  return next();
-});
+Called via `app.use('myRoute', middlewareObj)`
 
-app.get('/myroute', function (req, res) {
-  res.send('hello');
-});
-```
+### Types
+> Third party middleware in v3 will need to be manually require()'d in v4. [Details here][changes3to4]
 
+* gzipping (compression)
+* logging requests (morgan)
+* request body parsing as JSON, form-url-encoded, raw, text (body-parser), form-multipart (multer)
+* cookie parsing (cookie-parser)
+* session handling (express-session)
+* 'cross site request forgery' protection (csurf)
+* serve static files, dir (serve-static, serve-index)
+* virtual host handling (vhost)
+* basic authentication (? ...express.basicAuth())
+* ...
 
 
 
@@ -147,4 +151,4 @@ app.get('/myroute', function (req, res) {
 
 [nodecasts-httpclient]: <https://courses.nodecasts.io/courses/introduction-to-node-js/lectures/1119972>
 [nodecasts-express]: <https://courses.nodecasts.io/courses/express-js>
-
+[changes3to4]: <http://expressjs.com/en/guide/migrating-4.html#changes>
