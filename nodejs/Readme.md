@@ -48,6 +48,9 @@ app.set('view engine', 'jade');
 
 app.get('/', function () {
     res.render('index', dataObj);
+
+    // Internally calls app.engine('jade', require('jade').__express) where the 2nd fn param needs to implement a certain interface
+
 });
 ```
 
