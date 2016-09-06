@@ -162,6 +162,36 @@ app.get('/other/:userId/route', function () {
     // Consume req.user
 })
 ```
+# Routing
+## app.METHOD()
+Routing calls are based on RESTful names. ie. get, post,.. [All supported methods](http://expressjs.com/en/4x/api.html#routing-methods)
+
+```javascript
+app.get('/my/route/or/regex', function (req, res, next) {
+    next([anError]) // to move on to the next middleware
+    next('route') // to move on to the next matching route
+    res.end() // to end without data response
+    res.status(404).end(); // end with error status
+
+    // End WITH data response
+    res.send()
+    res.sendFile()
+    res.json()
+});
+
+// Use multiple middleware
+app.get('/my/path/admin', authAdmin, getUsers, renderUsers);
+
+// OR use a dynamic queue of middleware
+var adminQueue = [authAdmin, getUsers, renderUsers];
+app.get('/my/path/admin', adminQueue);
+```
+
+## app.all()
+Handle any request without specifying RESTful METHOD
+```javascript
+app.all('*', userAuth);
+```
 
 
 
