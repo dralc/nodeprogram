@@ -168,12 +168,12 @@ Routing calls are based on RESTful names. ie. get, post,.. [All supported method
 
 ```javascript
 app.get('/my/route/or/regex', function (req, res, next) {
-    next([anError]) // to move on to the next middleware
-    next('route') // to move on to the next matching route
-    res.end() // to end without data response
-    res.status(404).end(); // end with error status
+    return next([anError]) // to move on to the next middleware
+    return next('route') // OR to move on to the next matching route
+    res.end() // OR to end without data response
+    res.status(404).end(); // OR end with error status
 
-    // End WITH data response
+    // OR End WITH a data response
     res.send()
     res.sendFile()
     res.json()
@@ -188,12 +188,22 @@ app.get('/my/path/admin', adminQueue);
 ```
 
 ## app.all()
-Handle any request without specifying RESTful METHOD
+Handle any request without specifying the RESTful METHOD
 ```javascript
 app.all('*', userAuth);
 ```
 
+# Request
+Wrapper for nodejs `http.request`
 
+* `req.query`: The query string params in the request url
+* `req.params`: A more direct way to list out any named URL parameters in route/s
+* `req.body`: Provided by _body-parser_ middleware
+* `req.files`: Provided by _multer_ middleware
+* `req.route`: Gets route info
+* `req.cookies`: Provided by _cookie-parser_ middleware
+* `req.header/get('content-type')`: Gets a http header field
+* ...
 
 [#]: -------------------------------------------------------------------
 (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
