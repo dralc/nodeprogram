@@ -194,15 +194,32 @@ app.all('*', userAuth);
 ```
 
 # Request
-Wrapper for nodejs `http.request`
+Power-up for nodejs `http.request`
 
 * `req.query`: The query string params in the request url
-* `req.params`: A more direct way to list out any named URL parameters in route/s
+* `req.params`: A more direct way to list out any named URL parameters (/aroute/:my/:param) in route/s
 * `req.body`: Provided by _body-parser_ middleware
 * `req.files`: Provided by _multer_ middleware
 * `req.route`: Gets route info
 * `req.cookies`: Provided by _cookie-parser_ middleware
 * `req.header/get('content-type')`: Gets a http header field
+* `req.accepts`(type): Checks what content type the requesting client accepts. Used by [_res.format()_](http://expressjs.com/en/api.html#res.format)
+* ...
+
+# Response
+Power-up for nodejs `http.response`
+
+* `res.render`(templateName, [data], [cb(err, html)]): Parse template file and calls _res.send(html)_ by default if _cb_ wasn't provided
+* `res.locals`: An alternative way to passing data the template
+* `res.set(headersObj)`: Set multiple response headers in one go
+* `res.status(codeNo)`: It's chainable like so: res.status(123).send('some msg');
+* `res.send`(data): Sets some default headers and sends data where data can be a Number, String, Object, Array or Buffer
+* `res.json`(arr|obj): Alternative to _res.send(arr|obj)_ and goes through the json transforms set by the app settings _json replacer_ and _json spaces_
+* `res.jsonp`(arr|obj): Send text/javascript via request URL with ?callback=cb
+* `res.redirect`(route|url): Defaults to status 302
+* `res.cookie`(key, val, options): Modifies the Set-Cookie header
+* `res.clearCookie`(key)
+* `res.format`(mapOfTypesToHandlers): See [details](http://expressjs.com/en/api.html#res.format)
 * ...
 
 [#]: -------------------------------------------------------------------
