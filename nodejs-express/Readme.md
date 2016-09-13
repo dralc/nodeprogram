@@ -193,6 +193,9 @@ Handle any request without specifying the RESTful METHOD
 app.all('*', userAuth);
 ```
 
+
+
+
 # Request
 Power-up for nodejs `http.request`
 
@@ -221,6 +224,32 @@ Power-up for nodejs `http.response`
 * `res.clearCookie`(key)
 * `res.format`(mapOfTypesToHandlers): See [details](http://expressjs.com/en/api.html#res.format)
 * ...
+
+# Error handling
+Implement error handling as middleware since it applies across the whole app.
+
+```javascript
+app.use(function (err, req, res, next) {
+    // HANDLE Errors
+    console.log(err);
+    res.send(500, {msg: 'some app error'}); // print json
+    res.render('/errors/500'); //print 500.jade
+});
+
+app.get('/my/route', function () {
+    // THROW custom errors
+    next(new Error('Error type 1'));
+});
+
+```
+
+For development-only, use [errorhandler](http://expressjs.com/en/resources/middleware/errorhandler.html)
+
+
+# Application
+* `app.render()`: like _res.render()_ but doesn't auto-send the rendered template to the client. It renders the template string which you can then use to your liking (eg. send it via [sendgrid email](https://www.npmjs.com/package/sendgrid) )
+
+
 
 [#]: -------------------------------------------------------------------
 (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
