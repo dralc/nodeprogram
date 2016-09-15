@@ -126,9 +126,9 @@ Defaults to `true`
 Sets the return behaviour of `req.subdomains`
 
 ## Middleware
-Are the handlers of a Request.
-
-Called via `app.use('myRoute', middlewareObj)`
+Are the handler/s of a *Route*. You can register them at:
+* Application-level: `app.use()`, [details](http://expressjs.com/en/4x/api.html#app.use)
+* Router-level; `router.use()`, [details ](http://expressjs.com/en/guide/using-middleware.html#middleware.router)
 
 ### Types
 > Third party middleware in v3 will need to be manually require()'d in v4. [Details here][changes3to4]
@@ -168,7 +168,7 @@ Routing calls are based on RESTful names. ie. get, post,.. [All supported method
 
 ```javascript
 app.get('/my/route/or/regex', function (req, res, next) {
-    return next([anError]) // to move on to the next middleware
+    return next([anError]) // to move on to the next route handler or middleware
     return next('route') // OR to move on to the next matching route
     res.end() // OR to end without data response
     res.status(404).end(); // OR end with error status
@@ -179,10 +179,11 @@ app.get('/my/route/or/regex', function (req, res, next) {
     res.json()
 });
 
-// Use multiple middleware
+// ----- Use multiple middleware -----
 app.get('/my/path/admin', authAdmin, getUsers, renderUsers);
+// !remember to call next() to trigger subsequent handlers
 
-// OR use a dynamic queue of middleware
+// ----- OR use a dynamic queue of middleware -----
 var adminQueue = [authAdmin, getUsers, renderUsers];
 app.get('/my/path/admin', adminQueue);
 ```
@@ -193,8 +194,34 @@ Handle any request without specifying the RESTful METHOD
 app.all('*', userAuth);
 ```
 
+## Router instances (Express 4)
+* Specifying routes and the handlers is less repetitive via chaining.
+* Each _Router_ instance is set up like a mini express.js app. See example below.
+
+```javascript
+// ----- File: routers/section1.js -----
+router = express.Router();
+// router.all(fn);
+router.route('/my/route')     // OR app.route()
+      .all(fn1)
+      .get(fn2)
+      .post(fn3)
+      ...
+// router.param('/my/user/:id, fn);
+module.exports = router;
 
 
+// ------ File: Main.js ------
+app = express();
+section1Router = require('./routers/section1')
+app.use('/section1', section1Router);
+```
+
+## Route path
+Can be a:
+* String `'/my/route'` (nb. `-` and `.` are interpreted literally)
+* String pattern `'/my/(ro*te'`
+* Regex `'/.*fly$/'`
 
 # Request
 Power-up for nodejs `http.request`
