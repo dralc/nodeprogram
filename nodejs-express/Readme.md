@@ -49,7 +49,8 @@ app.set('view engine', 'jade');
 app.get('/', function () {
     res.render('index', dataObj);
 
-    // Internally calls app.engine('jade', require('jade').__express) where the 2nd fn param needs to implement a certain interface
+    // Internally calls app.engine('jade', require('jade').__express) where the
+    // 2nd fn param needs to implement a certain interface
 
 });
 ```
@@ -274,12 +275,14 @@ For development-only, use [errorhandler](http://expressjs.com/en/resources/middl
 
 
 # Application
-* `app.render()`: like _res.render()_ but doesn't auto-send the rendered template to the client. It renders the template string which you can then use to your liking (eg. send it via [sendgrid email](https://www.npmjs.com/package/sendgrid) )
+* `app.render()`: like _res.render()_ but doesn't auto-send the rendered template to the client.
+It renders the template string which you can then use to your liking (eg. send it via [sendgrid email](https://www.npmjs.com/package/sendgrid) )
 
 
 
 [#]: -------------------------------------------------------------------
-(These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+(These are reference links used in the body of this note and get stripped out when the
+ markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 [nodecasts-httpclient]: <https://courses.nodecasts.io/courses/introduction-to-node-js/lectures/1119972>
 [nodecasts-express]: <https://courses.nodecasts.io/courses/express-js>
