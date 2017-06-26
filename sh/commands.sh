@@ -188,6 +188,9 @@ someVar='dog'
 dog1='john'
 ${someVar}1  # complex var expansion. gives dog1
 
+var1=${myVar:-myDefault}    # default value
+# https://unix.stackexchange.com/questions/122845/using-a-b-for-variable-assignment-in-scripts
+
 # 'Here document' (file input redirection)
 # inside a here documents, single and double quotes are printed as literals which could be more intuitive
 cat <<- _EOF_   # '-' means ignore tabs. _EOF_ can be any token to mark the start and end of the file
